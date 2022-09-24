@@ -20,6 +20,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme theme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(),
       body: BlocBuilder<QuotesCubit, QuotesState>(
@@ -33,14 +34,43 @@ class _QuotesScreenState extends State<QuotesScreen> {
             );
           }
           if (state is QuotesIsLoaded) {
-            return ListView.separated(
-              itemCount: state.quotes.length,
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(height: 10);
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return Text(state.quotes[index].content);
-              },
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.separated(
+                itemCount: state.quotes.length,
+                physics: BouncingScrollPhysics(),
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(height: 10);
+                },
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          state.quotes[index].content,
+                          style: theme.headline1!.copyWith(
+                            fontSize: 20,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          state.quotes[index].author,
+                          style: theme.headline1!.copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             );
           }
           return Constants.loading();
