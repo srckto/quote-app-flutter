@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quote/config/locale/app_localizations_setup.dart';
 import 'package:quote/config/themes/app_theme.dart';
 import 'package:quote/core/utils/app_strings.dart';
+import 'package:quote/features/layout/presentation/cubit/layout_cubit.dart';
+import 'package:quote/features/layout/presentation/screens/layout_screen.dart';
 import 'package:quote/features/quotes/presentation/cubit/quotes_cubit.dart';
 import 'package:quote/features/quotes/presentation/screens/quotes_screen.dart';
 import 'package:quote/features/random_quote/presentation/cubit/random_quote_cubit.dart';
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<QuotesCubit>(
           create: (BuildContext context) => di.sl<QuotesCubit>(),
           child: QuotesScreen(),
+        ),
+        BlocProvider<LayoutCubit>(
+          create: (BuildContext context) => LayoutCubit(),
+          child: LayoutScreen(),
         ),
       ],
       child: BlocBuilder<LocalCubit, LocalState>(

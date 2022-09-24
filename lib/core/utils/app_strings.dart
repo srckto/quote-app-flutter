@@ -15,4 +15,6 @@ class AppStrings {
   static const String ar = "ar";
   static const String en = "en";
   static const String locale = "locale";
+  static const String quotesScreen = "Quotes";
+  static const String randomQuoteScreen = "Random Quote";
 }

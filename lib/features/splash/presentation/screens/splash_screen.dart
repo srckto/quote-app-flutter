@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:quote/core/utils/assets_manager.dart';
 import 'package:quote/core/utils/nav_helper.dart';
-import 'package:quote/features/quotes/presentation/screens/quotes_screen.dart';
+import 'package:quote/features/layout/presentation/screens/layout_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     timer = Timer(
       Duration(seconds: 2),
       () {
-        NavHelper.pushReplacement(context, QuotesScreen());
+        NavHelper.pushReplacement(context, LayoutScreen());
         // NavHelper.pushReplacement(context, RandomQuoteScreen());
       },
     );
