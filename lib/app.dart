@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
           child: RandomQuoteScreen(),
         ),
         BlocProvider<LocalCubit>(
-          create: (BuildContext context) => di.sl<LocalCubit>(),
-          // child: SplashScreen(),
+          create: (BuildContext context) => di.sl<LocalCubit>()..getSavedLang(),
+          child: SplashScreen(),
         ),
         BlocProvider<QuotesCubit>(
           create: (BuildContext context) => di.sl<QuotesCubit>(),

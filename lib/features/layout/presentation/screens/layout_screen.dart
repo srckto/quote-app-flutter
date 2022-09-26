@@ -33,7 +33,6 @@ class LayoutScreen extends StatelessWidget {
             children: cubit.items.map((e) => e.screen).toList(),
             index: cubit.index,
           ),
-        
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             elevation: 0.0,
@@ -52,9 +51,7 @@ class LayoutScreen extends StatelessWidget {
                 )
                 .toList(),
           ),
-
         );
-
       },
     );
   }

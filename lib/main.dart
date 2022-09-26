@@ -4,9 +4,9 @@ import 'package:quote/app.dart';
 import 'package:quote/bloc_observer.dart';
 import 'package:quote/injection_container.dart' as di;
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  di.init();
+  await di.init();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

@@ -27,7 +27,7 @@ import 'package:quote/features/splash/presentation/cubit/local_cubit.dart';
 
 final sl = GetIt.instance;
 
-void init() {
+Future<void> init() async {
   //! Features
   // Blocs
   sl.registerFactory(() => RandomQuoteCubit(getRandomQuoteUseCase: sl()));
@@ -80,6 +80,7 @@ void init() {
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(client: sl()));
 
   //! External
+  await GetStorage.init();
   sl.registerLazySingleton(() => GetStorage());
   sl.registerLazySingleton(() => InternetConnectionChecker());
   sl.registerLazySingleton(() => Dio());
