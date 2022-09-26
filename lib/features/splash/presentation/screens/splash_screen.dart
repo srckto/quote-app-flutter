@@ -13,28 +13,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  late Timer timer;
-
   @override
   void initState() {
     super.initState();
-    timer = Timer(
-      Duration(seconds: 2),
-      () {
-        NavHelper.pushReplacement(context, LayoutScreen());
-        // NavHelper.pushReplacement(context, RandomQuoteScreen());
-      },
-    );
+    init();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _cancelTimer();
-  }
-
-  _cancelTimer() {
-    timer.cancel();
+  void init() async {
+    await Future.delayed(Duration(seconds: 2));
+    NavHelper.pushReplacement(context, LayoutScreen());
   }
 
   @override
